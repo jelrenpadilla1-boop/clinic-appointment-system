@@ -75,6 +75,7 @@ Route::middleware(['auth'])->group(function () {
         
         // Appointment Management
         Route::resource('appointments', AdminAppointmentController::class);
+        Route::get('/appointments/export', [AdminAppointmentController::class, 'export'])->name('appointments.export'); // ADD THIS LINE
         Route::post('/appointments/{appointment}/approve', [AdminAppointmentController::class, 'approve'])->name('appointments.approve');
         Route::post('/appointments/{appointment}/reject', [AdminAppointmentController::class, 'reject'])->name('appointments.reject');
         Route::patch('/appointments/{appointment}/status', [AdminAppointmentController::class, 'updateStatus'])->name('appointments.update-status');
